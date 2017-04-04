@@ -3,15 +3,19 @@
 	var num1 = 0;
 	var num2 = 0;
 	var resultado;
-	var primerSigno;
+	var resetBool = false;
+	var historialMatriz = [];
 
 	function guardarValores(parametro){
 
-		if(document.calcu.entrada.value != "" && num1 == ""){
-			num1 = document.calcu.entrada.value;
-			document.calcu.entrada.value = "";
-			console.log("num1 guardado");
-		}	
+		for(var i = 0; i < 1 ; i++){
+			if(document.calcu.entrada.value != "" && num1 == ""){
+				num1 = document.calcu.entrada.value;
+				document.calcu.entrada.value = "";
+				console.log("num1 guardado");
+			}	
+		}
+
 		if(document.calcu.entrada.value != "" && num2 == ""){
 			num2 = document.calcu.entrada.value;
 			document.calcu.entrada.value = "";
@@ -21,12 +25,19 @@
 
 	function mostrarResultado(signo){
 
-		if(num1 != "" && num2 == ""){
-			primerSigno = signo;
-		}
+		resultado = eval(num1 + signo + num2);
+		document.calcu.resultadoPorPantalla.value = resultado;
 
 		if(num1 != "" && num2 != ""){
-		document.calcu.resultadoPorPantalla.value = eval(num1 + primerSigno + num2);
+			
+			console.log("num1 = " + num1);
+			console.log("num2 = " + num2);
+			console.log("signo = " + signo);
+			console.log("resul = " + resultado);
+			historialMatriz.push([num1 + signo + num2 + " = " + resultado + "|"]) ;
+			document.getElementById("historial").innerHTML = historialMatriz;
+			num1 = resultado;
+			num2 = "";
 		}
 	}
 
@@ -36,9 +47,10 @@
 	<input type="number" name="entrada" value="">
 	<input type="button" name="sumar" value="+" onclick="guardarValores(), mostrarResultado('+')">
 	<input type="button" name="resta" value="-" onclick="guardarValores(), mostrarResultado('-')">
-	<input type="button" name="igual" value="=" onclick="guardarValores(), mostrarResultado('=')">
 	<br>
 	<input typr="text" name="resultadoPorPantalla" readonly>
 	<br>
-	<input type="button" name="Reset" value="Reset" onclick="">
+	<input type="button" name="resetButton" value="Reset" onclick="">
+	<br>
+	<h2 id="historial"></h2>
 </form>

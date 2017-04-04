@@ -1,0 +1,44 @@
+<script type="text/javascript">
+
+	var num1 = 0;
+	var num2 = 0;
+	var resultado;
+	var primerSigno;
+
+	function guardarValores(parametro){
+
+		if(document.calcu.entrada.value != "" && num1 == ""){
+			num1 = document.calcu.entrada.value;
+			document.calcu.entrada.value = "";
+			console.log("num1 guardado");
+		}	
+		if(document.calcu.entrada.value != "" && num2 == ""){
+			num2 = document.calcu.entrada.value;
+			document.calcu.entrada.value = "";
+			console.log("num2 guardado");
+		}
+	}
+
+	function mostrarResultado(signo){
+
+		if(num1 != "" && num2 == ""){
+			primerSigno = signo;
+		}
+
+		if(num1 != "" && num2 != ""){
+		document.calcu.resultadoPorPantalla.value = eval(num1 + primerSigno + num2);
+		}
+	}
+
+</script>
+<form name="calcu">
+
+	<input type="number" name="entrada" value="">
+	<input type="button" name="sumar" value="+" onclick="guardarValores(), mostrarResultado('+')">
+	<input type="button" name="resta" value="-" onclick="guardarValores(), mostrarResultado('-')">
+	<input type="button" name="igual" value="=" onclick="guardarValores(), mostrarResultado('=')">
+	<br>
+	<input typr="text" name="resultadoPorPantalla" readonly>
+	<br>
+	<input type="button" name="Reset" value="Reset" onclick="">
+</form>

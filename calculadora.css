@@ -1,0 +1,22 @@
+body{
+	background-color: gray;
+	margin: 0 0 0
+}
+.contCentral{
+	background-color: #cbd1db;
+	padding: 10px 10px 10px 10px;
+}
+.inputActivo{
+	height: 90px;
+	font-size: 4em;
+	margin: 0 0 10px 0;
+	padding:0 0 0 0;
+}
+.contNumeros{
+	padding: 0 0 0 0;
+}
+.botones{
+	height: 90px;
+	font-size: 4em;
+	margin: 0 0 0 0;
+}
